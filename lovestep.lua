@@ -28,7 +28,6 @@ love.run = function()
     ls.accum = ls.accum + ls.dt
     while ls.accum >= ls.tickrate do
       ls.accum = ls.accum - ls.tickrate
-      ls.handleLoveEvents()
 
       if love.event then
         love.event.pump()
