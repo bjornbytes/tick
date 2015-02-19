@@ -47,7 +47,7 @@ love.run = function()
       if love.update then love.update(ls.tickrate) end
     end
 
-    while timer.getTime() - lastframe < 1 / ls.framelimit do
+    while timer.getTime() - lastframe < 1 / ls.framerate do
       timer.sleep(.0005)
     end
 
