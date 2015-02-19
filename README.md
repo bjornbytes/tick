@@ -1,7 +1,7 @@
 lovestep
 ===
 
-Gives `love.run` superpowers, including a [fixed timestep model](http://gafferongames.com/game-physics/fix-your-timestep/), framerate limiting and an event system.
+Gives `love.run` superpowers, including a [fixed timestep model](http://gafferongames.com/game-physics/fix-your-timestep/) and framerate limiting.
 
 Usage
 ---
