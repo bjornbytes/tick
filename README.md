@@ -31,6 +31,10 @@ Sets the maximum number of frames per second that can occur.  For example, setti
 
 Sets the tick rate of the fixed timestep model (in seconds per tick), which limits the number of calls to `love.update`.  As a consequence, the `dt` argument passed to `love.update` will always be `lovestep.tickrate`.  The default is 33 ticks per second.
 
+- `lovestep.timescale = 1`
+
+Multiplies all time values by this factor.  For example, setting `timescale` to `0.5` could be used for a bullet time effect.
+
 - `lovestep.sleep = .001`
 
 The number of milliseconds to sleep at the end of a frame.  The default of .001 is recommended so you're nice to the player's CPU.

@@ -1,6 +1,7 @@
 local ls = {
   framerate = -1,
   tickrate = .03,
+  timescale = 1,
   sleep = .001,
   dt = 0,
   accum = 0,
@@ -24,7 +25,7 @@ love.run = function()
 
   while true do
     timer.step()
-    ls.dt = timer.getDelta()
+    ls.dt = timer.getDelta() * ls.timescale
     ls.accum = ls.accum + ls.dt
     while ls.accum >= ls.tickrate do
       ls.accum = ls.accum - ls.tickrate
