@@ -1,4 +1,4 @@
-local ls = {
+local tick = {
   framerate = -1,
   tickrate = .03,
   timescale = 1,
@@ -25,10 +25,10 @@ love.run = function()
 
   while true do
     timer.step()
-    ls.dt = timer.getDelta() * ls.timescale
-    ls.accum = ls.accum + ls.dt
-    while ls.accum >= ls.tickrate do
-      ls.accum = ls.accum - ls.tickrate
+    tick.dt = timer.getDelta() * tick.timescale
+    tick.accum = tick.accum + tick.dt
+    while tick.accum >= tick.tickrate do
+      tick.accum = tick.accum - tick.tickrate
 
       if love.event then
         love.event.pump()
@@ -44,11 +44,11 @@ love.run = function()
         end
       end
 
-      ls.tick = ls.tick + 1
-      if love.update then love.update(ls.tickrate) end
+      tick.tick = tick.tick + 1
+      if love.update then love.update(tick.tickrate) end
     end
 
-    while timer.getTime() - lastframe < 1 / ls.framerate do
+    while timer.getTime() - lastframe < 1 / tick.framerate do
       timer.sleep(.0005)
     end
 
@@ -56,13 +56,13 @@ love.run = function()
     if graphics and love.window and love.window.isCreated() then
       graphics.clear()
       graphics.origin()
-      ls.frame = ls.frame + 1
+      tick.frame = tick.frame + 1
       if love.draw then love.draw() end
       graphics.present()
     end
 
-    timer.sleep(ls.sleep)
+    timer.sleep(tick.sleep)
   end
 end
 
-return ls
+return tick
