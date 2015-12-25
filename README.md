@@ -8,7 +8,7 @@ Usage
 
 Copy the `tick.lua` file to a project directory and require it, which returns a table that includes all of the functionality.
 
-```
+```lua
 local tick = require 'tick'
 
 function love.load(arg)
@@ -27,9 +27,9 @@ These are simple variables that can be set on the `tick` table to change its beh
 
 Sets the maximum number of frames per second that can occur.  For example, setting framerate to 60 will limit the number of calls to `love.draw` to 60 per second.  Can be set to -1 for unlimited framerate (the default).
 
-- `tick.tickrate = .03`
+- `tick.rate = .03`
 
-Sets the tick rate of the fixed timestep model (in seconds per tick), which limits the number of calls to `love.update`.  As a consequence, the `dt` argument passed to `love.update` will always be `tick.tickrate`.  The default is 33 ticks per second.
+Sets the tick rate of the fixed timestep model (in seconds per tick), which limits the number of calls to `love.update`.  As a consequence, the `dt` argument passed to `love.update` will always be `tick.rate`.  The default is 33 ticks per second.
 
 - `tick.timescale = 1`
 
@@ -49,7 +49,7 @@ A read-only value representing the time elapsed since the last frame.  This is *
 
 - `tick.accum`
 
-A read-only value representing an accumulation of time.  In `love.draw` this will always be less than `tick.tickrate`.
+A read-only value representing an accumulation of time.  In `love.draw` this will always be less than `tick.rate`.
 
 - `tick.tick`
 
