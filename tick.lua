@@ -13,12 +13,16 @@ local timer = love.timer
 local graphics = love.graphics
 
 love.run = function()
+  if not timer then
+    error('love.timer is required for tick')
+  end
+
   if love.math then
     love.math.setRandomSeed(os.time())
   end
 
   if love.load then love.load(arg) end
-  if timer then timer.step() end
+  timer.step()
   local lastframe = 0
 
   love.update(0)
@@ -60,7 +64,7 @@ love.run = function()
       graphics.present()
     end
 
-    if timer then timer.sleep(tick.sleep) end
+    timer.sleep(tick.sleep)
   end
 end
 
