@@ -21,6 +21,8 @@ love.run = function()
   if timer then timer.step() end
   local lastframe = 0
 
+  love.update(0)
+
   while true do
     timer.step()
     tick.dt = timer.getDelta() * tick.timescale
