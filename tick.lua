@@ -17,19 +17,14 @@ love.run = function()
     error('love.timer is required for tick')
   end
 
-  if love.math then
-    love.math.setRandomSeed(os.time())
-  end
-
-  if love.load then love.load(arg) end
+  if love.load then love.load(love.arg.parseGameArguments(arg), arg) end
   timer.step()
   local lastframe = 0
 
   love.update(0)
 
   while true do
-    timer.step()
-    tick.dt = timer.getDelta() * tick.timescale
+    tick.dt = timer.step() * tick.timescale
     tick.accum = tick.accum + tick.dt
     while tick.accum >= tick.rate do
       tick.accum = tick.accum - tick.rate
@@ -39,7 +34,7 @@ love.run = function()
         for name, a, b, c, d, e, f in love.event.poll() do
           if name == 'quit' then
             if not love.quit or not love.quit() then
-              return a
+              return a or 0
             end
           end
 
@@ -57,8 +52,8 @@ love.run = function()
 
     lastframe = timer.getTime()
     if graphics and graphics.isActive() then
-      graphics.clear(graphics.getBackgroundColor())
       graphics.origin()
+      graphics.clear(graphics.getBackgroundColor())
       tick.frame = tick.frame + 1
       if love.draw then love.draw() end
       graphics.present()
