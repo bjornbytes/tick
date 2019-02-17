@@ -23,7 +23,7 @@ love.run = function()
 
   love.update(0)
 
-  while true do
+  return function()
     tick.dt = timer.step() * tick.timescale
     tick.accum = tick.accum + tick.dt
     while tick.accum >= tick.rate do
