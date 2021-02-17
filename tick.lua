@@ -25,7 +25,7 @@ love.run = function()
   timer.step()
   local lastframe = 0
 
-  love.update(0)
+  if love.update then love.update(0) end
 
   return function()
     tick.dt = timer.step() * tick.timescale
